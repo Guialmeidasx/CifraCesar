@@ -1,75 +1,137 @@
+```html
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aula – 12: Princípios de criptografia e Cifração simétrica.</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cifra de César | Criptografia</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<!-- formulário --> 
-  <h1>Cifra de César</h1>
+    <main class="container">
 
-  <label for="texto">Digite o texto para cifrar:</label>
-  <input type="text" id="texto">
+        <div class="cabecalho">
 
-  <label for="deslocamento">Deslocamento:</label>
-  <input type="number" id="deslocamento" value="3">
+            <span>ETEC ADOLPHO BEREZIN</span>
 
-  <button onclick="executarCifra()">Cifrar</button>
+            <h1>Cifra de César</h1>
 
-  <div id="resultado"></div>
-  
-</div>
+            <p>
+                Princípios de criptografia e cifração simétrica
+            </p>
+
+        </div>
+
+
+        <section class="card">
+
+            <label for="texto">
+                Digite o texto:
+            </label>
+
+            <textarea
+                id="texto"
+                placeholder="Digite aqui o texto que deseja cifrar..."
+                rows="5"></textarea>
+
+
+            <label for="deslocamento">
+                Deslocamento:
+            </label>
+
+            <input
+                type="number"
+                id="deslocamento"
+                value="3"
+                min="0"
+                max="25">
+
+
+            <div class="botoes">
+
+                <button onclick="executarCifra()">
+                    🔒 Cifrar
+                </button>
+
+                <button
+                    class="decifrar"
+                    onclick="executarDecifra()">
+                    🔓 Decifrar
+                </button>
+
+                <button
+                    class="limpar"
+                    onclick="limparCampos()">
+                    Limpar
+                </button>
+
+            </div>
+
+
+            <div id="resultado">
+
+                O resultado aparecerá aqui.
+
+            </div>
+
+        </section>
+
+
+        <section class="explicacao">
+
+            <h2>Como funciona?</h2>
+
+            <p>
+                A Cifra de César é uma técnica de criptografia que
+                substitui cada letra do texto por outra letra que
+                está determinada quantidade de posições à frente
+                ou atrás no alfabeto.
+            </p>
+
+            <p>
+                Por exemplo, utilizando um deslocamento de 3:
+            </p>
+
+            <div class="exemplo">
+
+                A → D<br>
+                B → E<br>
+                C → F
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <strong>Projeto acadêmico</strong>
+
+        <p>
+            ETEC Adolpho Berezin — Mongaguá/SP
+        </p>
+
+        <p>
+            Atividade de Princípios de Criptografia
+        </p>
+
+        <p>
+            © 2026
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
 </body>
 
-<script>
-
-// caesarCipher(texto, deslocamento): Esta função recebe o texto a ser cifrado e o deslocamento como parâmetros.
-function caesarCipher(texto, deslocamento) {
-
-// textoCifrado = "": Inicializa uma variável para armazenar o texto cifrado.
-  let textoCifrado = "";
-
-// for (let i = 0; i < texto.length; i++): Itera sobre cada caractere do texto original.
-  for (let i = 0; i < texto.length; i++) {
-
-// char = texto.charAt(i): Obtém o caractere atual.
-  let char = texto.charAt(i);
-
-// codigo = texto.charCodeAt(i): Obtém o código ASCII do caractere.
-  let codigo = texto.charCodeAt(i);
-
-// if (codigo >= 65 && codigo <= 90): Verifica se o caractere é uma letra maiúscula.
-  if (codigo >= 65 && codigo <= 90) { // Letras maiúsculas
-
-// codigo = ((codigo - 65 + deslocamento) % 26) + 65: Aplica o deslocamento para letras maiúsculas. O módulo % 26 garante que o código volte ao início do alfabeto se ultrapassar 'Z'.
-    codigo = ((codigo - 65 + deslocamento) % 26) + 65;
-
-
-// else if (codigo >= 97 && codigo <= 122): Verifica se o caractere é uma letra minúscula.
-  } else if (codigo >= 97 && codigo <= 122) { // Letras minúsculas
-
-
-// codigo = ((codigo - 97 + deslocamento) % 26) + 97: Aplica o deslocamento para letras minúsculas.
-    codigo = ((codigo - 97 + deslocamento) % 26) + 97;
-  }
-
-
-// textoCifrado += String.fromCharCode(codigo): Converte o novo código de volta para uma letra e adiciona ao texto cifrado.
-    textoCifrado += String.fromCharCode(codigo);
-  }  
-
-// return textoCifrado: Retorna o texto cifrado.
-  return textoCifrado;
-}
-
-// Comando para executar o resultado da cifração:
-function executarCifra() {
-      const textoOriginal = document.getElementById('texto').value;
-      const deslocamento = parseInt(document.getElementById('deslocamento').value);
-      const textoCifrado = caesarCipher(textoOriginal, deslocamento);
-      document.getElementById('resultado').innerText = "Texto cifrado: " + textoCifrado;
-}
-</script>
 </html>
+```
